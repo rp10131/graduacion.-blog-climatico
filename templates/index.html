@@ -8,38 +8,57 @@
   >
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="../static/css/style.css">
-  <title>El diario del programador</title>
+  <title>Blog Climático</title>
 </head>
 <body>
-  <header class="header">
-    <img src="../static/img/logo.svg" alt="logo" width="30" height="30">
-    <ul class="main-list">
-        <li class="list__item">
-            <img src="../static/img/login.svg" alt="login" width="20" height="20">
-        </li>
-    </ul>
-  </header>
-  <main>
-    {% block content %}
-    <h1 class="main__title">🌍 Blog Climático</h1>
-    <ul class="cards-list">
-      {% for entrada in entradas %}
-      <li class="card">
-        <a class="card__link" href="/card/{{entrada.id}}">
-          <img class="card__img" src="../static/img/post_icon.png" width="250" height="250" alt="post_icon">
-          <div class="card__text">
-            <strong><h2 class="card__title">{{ entrada.title }}</h2></strong>
-            <p class="card__subtitle">{{ entrada.subtitle }}</p>
-          </div>
-        </a>
-      </li>
-      {% endfor %}
+  <div class="wrapper">
+    <div class="sidebar">
+      {% block content %}
+      <!-- Iniciar o Cerrar sesión -->
+      <div class="log__button">
+        {% if session.get('user_id') %}
+        <a href="{{ url_for('logout') }}">Cerrar sesión</a>
+        {% else %}
+        <a href="{{ url_for('login') }}">Iniciar sesión</a>
+        {% endif %}
+      </div>
+      <div class="log__button">
+        <a href="{{ url_for('create') }}">Nueva entrada</a>
+      </div>
+    </div>
+    <div class="sheet">
+    <header class="header">
+      <img src="../static/img/logo.svg" alt="logo" width="30" height="30">
+      <ul class="main-list">
+          <li class="list__item">
+              <img src="../static/img/login.svg" alt="login" width="20" height="20">
+          </li>
       </ul>
-      <a href="{{ url_for('create') }}">Nueva entrada</a>
-    {% endblock %}
-  </main>
+    </header>
+    <main>
+      <h1 class="main__title">🌍 Blog Climático</h1>
+      <h1>{{ prompt.saludito }}</h1>
+      <h1 class="main__title">{{ prompt.titulo_prompt }}</h1>
+      <p> {{ prompt.texto_prompt }}</p>
+      <!-- Mostrar entradas -->
+      <ul class="cards-list">
+        {% for entrada in entradas %}
+        <li class="card">
+          <a class="card__link" href="/card/{{entrada.id}}">
+            <img class="card__img" src="../static/img/post_icon.png" width="200" height="200" alt="post_icon">
+            <div class="card__text">
+              <strong><h2 class="card__title">{{ entrada.title }}</h2></strong>
+              <p class="card__subtitle">-{{ entrada.autor.login }}</p>
+            </div>
+          </a>
+        </li>
+        {% endfor %}
+        </ul>
+      {% endblock %}
+    </main>
+    </div>
+  </div>
   <footer>
-
   </footer>
 </body>
 </html>
