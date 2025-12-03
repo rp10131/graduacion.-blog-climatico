@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear una Entrada</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <a href="/"><img src="../static/img/logo2.svg" alt="logo" width="50" height="50"></a>
+        <ul class="main-list">
+            <li class="list__item">
+              <a href="">
+                <img src="../static/img/login.svg" alt="login" width="20" height="20">
+              </a>
+        </ul>
+      </header>
+      <main>
+        {% block content %}
+        <form action="{{ url_for('form_create') }}" method="post" class="creat-form">
+            <div class="form__card">
+                <img class="card__img" src="../static/img/post_icon.png" width="250" height="250" alt="post_icon">
+                <div class="form__inputs">
+                    <label for="title">
+                        <input class="form__input" type="text" name="title" id="title" placeholder="Escriba el título de la entrada" required>
+                    </label>
+                    <label for="subtitle">
+                        <input class="form__input" type="text" name="subtitle" id="subtitle" placeholder="Escriba el título secundario" required>
+                    </label>
+                </div>
+                <label for="text">
+                    <textarea class="form__text" name="text" id="text" cols="30" rows="10" required placeholder="Escribe algo de texto..."></textarea>
+                </label>
+                <li class="form-list_item">
+                    <label for="prompt">¿Basado en alguna de las ideas diarias?</label>
+                    <select name="prompt">
+                        <option value=" " {% if selected_color == '' %}selected{% endif %}>No</option>
+                        <option value="¿Cómo es el Clima Hoy?" {% if selected_color == 'Parte de: ¿Cómo es el Clima Hoy?' %}selected{% endif %}>¿Cómo es el Clima Hoy?</option>
+                        <option value="Sequía, Inundaciones y Erosión" {% if selected_color == 'Parte de: Sequía, Inundaciones y Erosión' %}selected{% endif %}>Sequía, Inundaciones y Erosión</option>
+                        <option value="Estaciones del Año en estos Años" {% if selected_color == 'Parte de: Estaciones del Año en estos Años' %}selected{% endif %}>Estaciones del Año en estos Años</option>
+                        <option value="Noticia Ficticia del Clima" {% if selected_color == 'Parte de: Noticia Ficticia del Clima' %}selected{% endif %}>Noticia Ficticia del Clima</option>
+                        <option value="Cambio Climático Local" {% if selected_color == 'Parte de: Cambio Climático Local' %}selected{% endif %}>Cambio Climático Local</option>
+                        <option value="El Futuro del Clima" {% if selected_color == 'Parte de: El Futuro del Clima' %}selected{% endif %}>El Futuro del Clima</option>
+                        <option value="Preparaciones" {% if selected_color == 'Parte de: Preparaciones' %}selected{% endif %}>Preparaciones</option>
+                        <option value="¿Clima Habitual?" {% if selected_color == 'Parte de: ¿Clima Habitual?' %}selected{% endif %}>¿Clima Habitual?</option>
+                        <option value="Metáfora" {% if selected_color == 'Parte de: Metáfora' %}selected{% endif %}>Metáfora</option>
+                        <option value="Acciones Tomadas" {% if selected_color == 'Parte de: Acciones Tomadas' %}selected{% endif %}>Acciones Tomadas</option>
+                        <option value="Costumbres Locales Afectadas" {% if selected_color == 'Parte de: Costumbres Locales Afectadas' %}selected{% endif %}>Costumbres Locales Afectadas</option>
+                        <option value="Clima Inusual de Hace Poco" {% if selected_color == 'Parte de: Clima Inusual de Hace Poco' %}selected{% endif %}>Clima Inusual de Hace Poco</option>
+                        <option value="El Clima y Tus Actividades" {% if selected_color == 'Parte de: El Clima y Tus Actividades' %}selected{% endif %}>El Clima y Tus Actividades</option>
+                        <option value="Vegetación y Fauna" {% if selected_color == 'Parte de: Vegetación y Fauna' %}selected{% endif %}>Vegetación y Fauna</option>
+                    </select>
+                <button class="form__button">Crear</button>
+            </div>
+        </form>
+        {% endblock %}
+      </main>
+</body>
+</html>

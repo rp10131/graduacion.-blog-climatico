@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+  >
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../static/css/style.css">
+  <title>Entrada</title>
+</head>
+<body>
+  <header class="header">
+     <a href="/"><img src="../static/img/logo.svg" alt="logo" width="30" height="30"></a>
+    <ul class="main-list">
+        <li class="list__item">
+          <a href="/my">
+            <img src="../static/img/login.svg" alt="login" width="20" height="20">
+          </a>
+    </ul>
+  </header>
+  <main class="main">
+    {% block content %}
+    <h1 class="main__title">{{entrada.title}}</h1>
+    <div class="main__block">
+      <h2 class="main__subtitle">{{entrada.subtitle}}</h2>
+      <div class="main__text">
+{{entrada.text}}
+      <hr>
+<strong>Publicación de {{entrada.autor.login}}</strong> ({{entrada.fecha}})
+<i>{{entrada.idea}}</i>
+      </div>
+      <a class="main__return" href="/">Volver al Index</a>
+  </main>
+  {% endblock %}
+  <footer>
+
+  </footer>
+</body>
+</html>

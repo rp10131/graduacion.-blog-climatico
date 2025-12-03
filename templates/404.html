@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+  >
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../static/css/style.css">
+  <title>Error 404 - página no encontrada</title>
+</head>
+<body>
+  <header class="header">
+    <ul class="main-list">
+        <li class="list__item">
+    </ul>
+  </header>
+  <main class="main">
+    {% block content %}
+    <body>
+      <h1 class="main__title">Error 404</h1>
+      <h1 class="main__title">Oops, parece que no hay nada...</h1>
+      <div class="sheet">
+        <p>La página que busca, <strong>" {{ url }} "</strong>, no existe. Podría ser que escribió mal, o el enlace está roto.</p>
+      </div>
+      <h1 class="main__title"> </h1>
+      <a class="main__return" href="/">Volver a la página de inicio</a>
+  {% endblock %}
+  <footer>
+
+  </footer>
+</body>
+</html>
